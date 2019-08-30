@@ -382,7 +382,7 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
     [self updatePostalFieldPlaceholder];
 
     if ([countryCode isEqualToString:@"US"]) {
-        self.postalCodeField.keyboardType = UIKeyboardTypePhonePad;
+        self.postalCodeField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     }
     else {
         self.postalCodeField.keyboardType = UIKeyboardTypeDefault;
@@ -1182,11 +1182,7 @@ typedef NS_ENUM(NSInteger, STPCardTextFieldState) {
     STPFormTextField *textField = [[STPFormTextField alloc] initWithFrame:CGRectZero];
     textField.backgroundColor = [UIColor clearColor];
     // setCountryCode: updates the postalCodeField keyboardType, this is safe
-    if (@available(iOS 10, *)) {
-        textField.keyboardType = UIKeyboardTypeASCIICapableNumberPad;
-    } else {
-        textField.keyboardType = UIKeyboardTypePhonePad;
-    }
+    textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     textField.textAlignment = NSTextAlignmentLeft;
     textField.font = self.font;
     textField.defaultColor = self.textColor;

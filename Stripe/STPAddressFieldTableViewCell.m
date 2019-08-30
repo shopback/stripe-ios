@@ -159,7 +159,7 @@
             break;
         case STPAddressFieldTypeZip:
             if ([self countryCodeIsUnitedStates]) { 
-                self.textField.keyboardType = UIKeyboardTypePhonePad;
+                self.textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             } else {
                 self.textField.keyboardType = UIKeyboardTypeASCIICapable;
             }
