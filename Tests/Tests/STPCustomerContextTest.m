@@ -13,6 +13,7 @@
 #import "STPCustomerContext.h"
 #import "STPEphemeralKeyManager.h"
 #import "STPFixtures.h"
+#import "STPEphemeralKey.h"
 
 @interface STPCustomerContext (Testing)
 
@@ -23,6 +24,12 @@
 - (instancetype)initWithKeyManager:(STPEphemeralKeyManager *)keyManager;
 
 @end
+
+@interface STPAPIClient (Testing)
+@property (nonatomic) NSString *apiKey;
+
+@end
+
 
 @interface STPCustomerContextTest : XCTestCase
 
@@ -367,6 +374,19 @@
         [exp2 fulfill];
     }];
     [self waitForExpectationsWithTimeout:2 handler:nil];
+}
+
+- (void)testUsesAPIClient {
+    STPAPIClient *client = [STPAPIClient sharedClient];
+    client.publishableKey = @"publishableKey";
+    client.stripeAccount = @"stripeAccount";
+    STPAPIClient *customerContextAPIClient = [STPAPIClient apiClientWithEphemeralKey:[STPFixtures ephemeralKey]];
+    
+    // This feels pretty unexpected, but it's the current behavior: publishableKey vs. apiKey
+    XCTAssertEqualObjects(customerContextAPIClient.publishableKey, @"publishableKey");
+    XCTAssertEqualObjects(customerContextAPIClient.apiKey, [STPFixtures ephemeralKey].secret);
+
+    XCTAssertEqualObjects(customerContextAPIClient.stripeAccount, @"stripeAccount");
 }
 
 #pragma mark - includeApplePaySources
