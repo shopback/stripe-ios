@@ -379,8 +379,6 @@
 		314F9CC1235E66920059E2F6 /* STPFPXBankStatusResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 314F9CBE235E66920059E2F6 /* STPFPXBankStatusResponse.h */; };
 		314F9CC2235E66920059E2F6 /* STPFPXBankStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 314F9CBF235E66920059E2F6 /* STPFPXBankStatusResponse.m */; };
 		314F9CC3235E66920059E2F6 /* STPFPXBankStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 314F9CBF235E66920059E2F6 /* STPFPXBankStatusResponse.m */; };
-		315CB85322E7BD0E00E612A3 /* libStripe3DS2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 315CB85222E7BD0D00E612A3 /* libStripe3DS2.a */; };
-		315CB85522E7BD1400E612A3 /* Stripe3DS2.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 315CB85422E7BD1400E612A3 /* Stripe3DS2.bundle */; };
 		315CB86222E7D13600E612A3 /* libStripe3DS2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 315CB85222E7BD0D00E612A3 /* libStripe3DS2.a */; };
 		315CB8C222E7D96000E612A3 /* STDSChallengeStatusReceiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 315CB8A322E7D95E00E612A3 /* STDSChallengeStatusReceiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		315CB8C322E7D96000E612A3 /* STDSRuntimeException.h in Headers */ = {isa = PBXBuildFile; fileRef = 315CB8A422E7D95E00E612A3 /* STDSRuntimeException.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2253,7 +2251,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				315CB85322E7BD0E00E612A3 /* libStripe3DS2.a in Frameworks */,
 				F15232311EA93E6800D65C67 /* Contacts.framework in Frameworks */,
 				F1D765CE1EDE331500F37005 /* CoreLocation.framework in Frameworks */,
 				F116E94C1D83405E0026A52A /* Foundation.framework in Frameworks */,
@@ -4230,7 +4227,6 @@
 				31C8277623398B0B002ECB0A /* stp_icon_bank.png in Resources */,
 				C1300D221EB8D38A0080AF7B /* stp_card_unknown@3x.png in Resources */,
 				0438EFBE1B741C2800D506CC /* stp_card_discover@2x.png in Resources */,
-				315CB85522E7BD1400E612A3 /* Stripe3DS2.bundle in Resources */,
 				8BCB6E562053389800629978 /* stp_card_unionpay_template_en.png in Resources */,
 				C1300D2B1EB8D3AB0080AF7B /* stp_card_error_amex@3x.png in Resources */,
 				8BCB6E5B2053389800629978 /* stp_card_unionpay_en.png in Resources */,
@@ -5149,6 +5145,10 @@
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-D",
+					STRIPE_ONLY_OPEN_SOURCE,
+				);
 			};
 			name = Debug;
 		};
@@ -5156,6 +5156,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 04F39F0B1AEF2AFE005B926E /* Project-Release.xcconfig */;
 			buildSettings = {
+				OTHER_CFLAGS = (
+					"-D",
+					STRIPE_ONLY_OPEN_SOURCE,
+				);
 			};
 			name = Release;
 		};

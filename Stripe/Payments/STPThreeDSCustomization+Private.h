@@ -6,6 +6,8 @@
 //  Copyright © 2019 Stripe, Inc. All rights reserved.
 //
 
+#ifndef STRIPE_ONLY_OPEN_SOURCE
+
 #import "STPThreeDSButtonCustomization.h"
 #import "STPThreeDSUICustomization.h"
 #import "STPThreeDSFooterCustomization.h"
@@ -49,3 +51,5 @@
 @interface STPThreeDSTextFieldCustomization ()
 @property (nonatomic, strong) STDSTextFieldCustomization *textFieldCustomization;
 @end
+
+#endif

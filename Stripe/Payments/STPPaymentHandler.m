@@ -54,7 +54,9 @@ NSString * const STPPaymentHandlerErrorDomain = @"STPPaymentHandlerErrorDomain";
     dispatch_once(&onceToken, ^{
         sharedHandler = [self new];
         sharedHandler->_apiClient = [STPAPIClient sharedClient];
+#ifndef STRIPE_ONLY_OPEN_SOURCE
         sharedHandler.threeDSCustomizationSettings = [STPThreeDSCustomizationSettings defaultSettings];
+#endif
     });
 
     return sharedHandler;
@@ -523,8 +525,11 @@ withAuthenticationContext:(id<STPAuthenticationContext>)authenticationContext
                                                                 [self _retrieveAndCheckIntentForCurrentAction];
                                                                 return;
                                                             }
+#ifndef STRIPE_ONLY_OPEN_SOURCE
                                                             STDSChallengeParameters *challengeParameters = [[STDSChallengeParameters alloc] initWithAuthenticationResponse:aRes];
-                                                            
+#else
+                                                            STDSChallengeParameters *challengeParameters = nil;
+#endif
                                                             STPVoidBlock doChallenge = ^{
                                                                 NSError *presentationError;
                                                                 if (![self _canPresentWithAuthenticationContext:self->_currentAction.authenticationContext error:&presentationError]) {

@@ -99,6 +99,10 @@ Demo this in our [Basic Integration example app](/Example/Basic&20Integration) b
 
 We welcome contributions of any kind including new features, bug fixes, and documentation improvements. Please first open an issue describing what you want to build if it is a major change so that we can discuss how to move forward. Otherwise, go ahead and open a pull request for minor changes such as typo fixes and one liners.
 
+## Open Source
+
+Though the bulk of our SDK is open-source, 3DS2 transactions are handled by the closed-source Stripe3DS2 framework. If your application requires an entirely open-source framework and you don't need to process 3DS2 transactions, you can build using the STRIPE_ONLY_OPEN_SOURCE flag. (docs here)
+
 ### Running Tests
 
 1. Install Carthage (if you have homebrew installed, `brew install carthage`)

@@ -6,6 +6,8 @@
 //  Copyright © 2019 Stripe, Inc. All rights reserved.
 //
 
+#ifndef STRIPE_ONLY_OPEN_SOURCE
+
 #import "STPThreeDSCustomizationSettings.h"
 
 #import "STPThreeDSUICustomization.h"
@@ -30,3 +32,5 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

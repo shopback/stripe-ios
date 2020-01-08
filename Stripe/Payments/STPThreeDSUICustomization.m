@@ -6,6 +6,8 @@
 //  Copyright © 2019 Stripe, Inc. All rights reserved.
 //
 
+#ifndef STRIPE_ONLY_OPEN_SOURCE
+
 #import "STPThreeDSUICustomization.h"
 #import "STPThreeDSCustomization+Private.h"
 #import "STPThreeDSFooterCustomization.h"
@@ -121,3 +123,5 @@
 }
 
 @end
+
+#endif

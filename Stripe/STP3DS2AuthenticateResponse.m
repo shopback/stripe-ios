@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
     if (!dict) {
         return nil;
     }
+#ifndef STRIPE_ONLY_OPEN_SOURCE
 
     NSURL *fallbackURL = [dict stp_urlForKey:@"fallback_redirect_url"];
 
@@ -53,6 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
     authResponse->_allResponseFields = dict;
 
     return authResponse;
+#else
+    return nil;
+#endif
 }
 
 @end

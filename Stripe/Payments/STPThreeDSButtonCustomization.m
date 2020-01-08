@@ -6,6 +6,8 @@
 //  Copyright © 2019 Stripe, Inc. All rights reserved.
 //
 
+#ifndef STRIPE_ONLY_OPEN_SOURCE
+
 #import "STPThreeDSButtonCustomization.h"
 #import "STPThreeDSCustomization+Private.h"
 
@@ -70,3 +72,5 @@
 }
 
 @end
+
+#endif

@@ -645,6 +645,7 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
                returnURL:(nullable NSString *)returnURLString
               maxTimeout:(NSInteger)maxTimeout
               completion:(STP3DS2AuthenticateCompletionBlock)completion {
+#ifndef STRIPE_ONLY_OPEN_SOURCE
     NSString *endpoint = [NSString stringWithFormat:@"%@/authenticate", APIEndpoint3DS2];
 
     NSMutableDictionary *appParams = [[STDSJSONEncoder dictionaryForObject:authRequestParams] mutableCopy];
@@ -668,6 +669,9 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
                                                           completion:^(STP3DS2AuthenticateResponse *authenticateResponse, __unused NSHTTPURLResponse *response, NSError *error) {
                                                               completion(authenticateResponse, error);
                                                           }];
+#else
+    NSLog(@"Not implemented: %@, %@, %@, %ld, %@", authRequestParams, sourceID, returnURLString, (long)maxTimeout, completion);
+#endif
 }
 
 - (void)complete3DS2AuthenticationForSource:(NSString *)sourceID completion:(STPBooleanSuccessBlock)completion {

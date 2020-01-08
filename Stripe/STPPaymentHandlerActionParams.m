@@ -43,6 +43,7 @@
 }
 
 - (nullable STDSThreeDS2Service *)threeDS2Service {
+#ifndef STRIPE_ONLY_OPEN_SOURCE
     if (!_serviceInitialized) {
         _serviceInitialized = YES;
         _threeDS2Service = [[STDSThreeDS2Service alloc] init];
@@ -58,7 +59,7 @@
             _threeDS2Service = nil;
         }
     }
-    
+#endif
     return _threeDS2Service;
 }
 
@@ -114,6 +115,7 @@
 }
 
 - (nullable STDSThreeDS2Service *)threeDS2Service {
+#ifndef STRIPE_ONLY_OPEN_SOURCE
     if (!_serviceInitialized) {
         _serviceInitialized = YES;
         _threeDS2Service = [[STDSThreeDS2Service alloc] init];
@@ -129,6 +131,7 @@
             _threeDS2Service = nil;
         }
     }
+#endif
     
     return _threeDS2Service;
 }
