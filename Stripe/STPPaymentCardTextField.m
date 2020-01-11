@@ -908,7 +908,7 @@ typedef NS_ENUM(NSInteger, STPCardTextFieldState) {
     CGFloat hPadding = STPPaymentCardTextFieldDefaultPadding;
     __block STPCardTextFieldState panVisibility = STPCardTextFieldStateVisible;
     __block STPCardTextFieldState expiryVisibility = STPCardTextFieldStateVisible;
-    __block STPCardTextFieldState cvcVisibility = STPCardTextFieldStateVisible;
+    __block STPCardTextFieldState cvcVisibility = STPCardTextFieldStateHidden;
     __block STPCardTextFieldState postalVisibility = self.postalCodeEntryEnabled ? STPCardTextFieldStateVisible : STPCardTextFieldStateHidden;
 
     CGFloat (^calculateMinimumPaddingWithLocalVars)(void) = ^CGFloat() {
